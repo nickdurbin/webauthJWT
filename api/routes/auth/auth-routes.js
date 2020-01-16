@@ -26,7 +26,7 @@ router.post("/login", async (req, res, next) => {
         message: `Welcome ${user.username}!`,
       })
     } else {
-      res.status(401).json({
+      res.status(401).json({ token, 
         message: "Invalid Credentials",
       })
     }

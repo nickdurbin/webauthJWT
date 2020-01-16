@@ -1,18 +1,19 @@
+require('dotenv').config()
 const jwt = require('jsonwebtoken');
 
 function generateToken(user) {
   const payload = {
-    subject: user.id, // sub in payload is what the token is about
+    subject: user.id, 
     username: user.username,
-    // ...otherData
   };
+
+  const secret = process.env.JWT_SECRET || 'A secret is a secret does.'
 
   const options = {
-    expiresIn: '1d', // show other available options in the library's documentation
+    expiresIn: '1d',
   };
 
-  // extract the secret away so it can be required and used where needed
-  return jwt.sign(payload, secrets.jwtSecret, options); // this method is synchronous
+  return jwt.sign(payload, secret, options);
 }
 
 module.exports = {
