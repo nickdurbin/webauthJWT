@@ -1,7 +1,7 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken');
 
-function tokenValidation(req, res, next) {
+const validateToken = (req, res, next) => {
   const { authorization } = req.headers
 
   if (authorization) {
@@ -21,5 +21,5 @@ function tokenValidation(req, res, next) {
 }
 
 module.exports = {
-  tokenValidation
+  validateToken
 }
