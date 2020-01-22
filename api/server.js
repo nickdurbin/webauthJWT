@@ -7,8 +7,8 @@ server.use(express.json())
 middleware(server)
 routes(server)
 
-server.get("/", (req, res, next) => {
-  server.send("<h2>Hello, human. I am your server.</h2>")
+server.get("/", (req, res) => {
+  res.send("<h2>Hello, human. I am your server.</h2>")
 })
 
 server.use((req, res, next) => {
@@ -16,6 +16,7 @@ server.use((req, res, next) => {
 })
 
 server.use((err, req, res, next) => {
+  console.log(err)
   res.status(500).json({ message: "The server has failed you in this instance. Please forgive and try again!"})
 })
 
